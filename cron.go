@@ -84,7 +84,7 @@ func event(date time.Time, lat, lon float64, e Event) time.Time {
 //  - @sunrise
 //  - @noon
 //  - @sunset
-// Each solar cron spec in in the form
+// Each solar cron spec is in the form
 //  @(sunrise|noon|sunset)([+-]duration)? lat lon
 type Parser struct {
 	// CronParser is the parser used to handle
