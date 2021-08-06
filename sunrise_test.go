@@ -74,7 +74,6 @@ func similarTime(a, b time.Time, tol time.Duration) bool {
 }
 
 func mustLoc(name string) *time.Location {
-	// return time.Local
 	loc, err := time.LoadLocation(name)
 	if err != nil {
 		panic(err)

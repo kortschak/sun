@@ -14,14 +14,14 @@ import (
 // time and location based on the formulae provided by the NOAA.
 //
 // See https://gml.noaa.gov/grad/solcalc/solareqns.PDF
-func Times(t time.Time, lat, lon float64) (rise, noon, set time.Time) {
-	gamma := fractionalYear(t)
+func Times(date time.Time, lat, lon float64) (rise, noon, set time.Time) {
+	gamma := fractionalYear(date)
 	decl := solarDeclinationAngle(gamma)
 	ha := deg(hourAngle(lat, decl))
 	eqTime := equationOfTime(gamma)
-	rise = timeFromMinutes(t, 720-4*(lon+ha)-eqTime)
-	noon = timeFromMinutes(t, 720-4*(lon)-eqTime)
-	set = timeFromMinutes(t, 720-4*(lon-ha)-eqTime)
+	rise = timeFromMinutes(date, 720-4*(lon+ha)-eqTime)
+	noon = timeFromMinutes(date, 720-4*(lon)-eqTime)
+	set = timeFromMinutes(date, 720-4*(lon-ha)-eqTime)
 	return rise, noon, set
 }
 
